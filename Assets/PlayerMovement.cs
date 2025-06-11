@@ -15,8 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public int jumpCount;
     public int maxJumps = 2;
 
-    private bool isGrounded;
-    private bool isJumping;
+    public bool isGrounded;
+    public bool isJumping;
 
     public Transform groundCheck;           
     public float groundCheckRadius = 0.2f; 
@@ -32,8 +32,17 @@ public class PlayerMovement : MonoBehaviour
     {
         MovementSystem();
         JumpButton();
-        DoubleJump();
+        //DoubleJump();
         WallSlide();
+
+        if (isGrounded == true)
+        {
+            isJumping = false;
+        }
+        else if (isGrounded  == false)
+        {
+            isJumping = true;
+        }
 
         //if(isGrounded == true)
         //{
@@ -55,21 +64,24 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             jumpCount++;
             Debug.Log("the jump method has been called");
+            
         }
 
         if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0)
         {
             rb.velocity = new Vector2(rb.velocity.x * 0.2f, rb.velocity.y * 0.5f);
+            Debug.Log("the double jump has been called");
+            return; 
         }
-   
+    
     }
 
-    public void DoubleJump()
-    {
+    //public void DoubleJump()
+    //{
 
 
 
-    }
+    //}
 
     public void WallSlide()
     {
