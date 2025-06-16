@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 239904914}
   - component: {fileID: 239904913}
   - component: {fileID: 239904912}
-  - component: {fileID: 239904911}
+  - component: {fileID: 239904916}
   m_Layer: 0
   m_Name: PlayerObject
   m_TagString: Player
@@ -142,29 +142,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &239904911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 239904910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8908efded32b21c47a287056a3800027, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 239904910}
-  rb: {fileID: 239904912}
-  playerMovementSpeed: 17.65
-  jumpForce: 12.88
-  jumpCount: 0
-  maxJumps: 2
-  groundCheck: {fileID: 310308553}
-  groundCheckRadius: 0.2
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!50 &239904912
 Rigidbody2D:
   serializedVersion: 4
@@ -188,9 +165,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &239904913
 BoxCollider2D:
@@ -278,7 +255,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
+    type: 3}
   m_Color: {r: 1, g: 0.5516948, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -305,6 +283,32 @@ Transform:
   - {fileID: 310308553}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &239904916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239904910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44eb6fcd78068954793ed986d60b2fc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 239904910}
+  rb: {fileID: 239904912}
+  playerMovementSpeed: 10
+  jumpForce: 12
+  doubleJump: 10
+  jumpCount: 0
+  maxJumps: 1
+  isGrounded: 0
+  isJumping: 0
+  groundCheck: {fileID: 310308553}
+  groundCheckRadius: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &310308552
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +334,7 @@ Transform:
   m_GameObject: {fileID: 310308552}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.004, y: -0.506, z: 0.03998274}
+  m_LocalPosition: {x: -0.004, y: -0.74, z: 0.03998274}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -347,7 +351,7 @@ GameObject:
   - component: {fileID: 417592222}
   - component: {fileID: 417592224}
   - component: {fileID: 417592223}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Floor01
   m_TagString: onFloor
   m_Icon: {fileID: 0}
@@ -455,7 +459,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
+    type: 3}
   m_Color: {r: 0, g: 0.66408014, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -728,7 +733,7 @@ GameObject:
   - component: {fileID: 2005424807}
   - component: {fileID: 2005424809}
   - component: {fileID: 2005424808}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Wall01
   m_TagString: onWall
   m_Icon: {fileID: 0}
@@ -836,7 +841,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
+    type: 3}
   m_Color: {r: 0, g: 0.66408014, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
