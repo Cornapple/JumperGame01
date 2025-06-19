@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
     public float playerMovementSpeed; // a number value characterised by point values. in this case refering to the player movement speed
     public float jumpForce = 0.5f; // a number value characterised by point values. in this case refering to the jump force of the player
     public float doubleJump = 0.3f;
-    public float wallSlidingSpeed;
+    public float wallSlidingSpeed = 0.1f;
 
     public int jumpCount; // a whole number value pertaining to the amount of jumps the player has performed
     public int maxJumps = 2; // a whole number pertaining to the maximum amount of jumps possible for the player to perform in mid air
@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
     }
     private void WallSlide()
     {
-        if(IsWalled() && !isGrounded == false && horizontal !=0f)
+        if(IsWalled() && !isGrounded == false && horizontal >=1f)
         {
             isWallSliding = true;
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
