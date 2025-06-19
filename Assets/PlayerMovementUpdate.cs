@@ -12,17 +12,21 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
     public float playerMovementSpeed; // a number value characterised by point values. in this case refering to the player movement speed
     public float jumpForce = 0.5f; // a number value characterised by point values. in this case refering to the jump force of the player
     public float doubleJump = 0.3f;
+    public float wallSlidingSpeed;
 
     public int jumpCount; // a whole number value pertaining to the amount of jumps the player has performed
     public int maxJumps = 2; // a whole number pertaining to the maximum amount of jumps possible for the player to perform in mid air
 
     public bool isGrounded; // a true or false value. in this case refering to whether the player is touching the ground or not
     public bool isJumping; // a true or false value. in this case refering to whether the player is jumping or not
+    private bool isWallSliding;
 
-    public Transform groundCheck;    // empty object with collider to check if the player is touching the ground        
+
+    public Transform groundCheck;
+    public Transform wallCheck;// empty object with collider to check if the player is touching the ground        
     public float groundCheckRadius = 0.5f; // the size of the collider used on the groundcheck
     public LayerMask groundLayer; // the layer mask applied to the ground to allow the groundcheck to function
-
+    public LayerMask wallLayer;
     private void Start()
     {
         Debug.Log("Hello World");
@@ -37,6 +41,7 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
 
         MovementSystem();
         JumpButton();
+        WallSlide();
     }
 
     private void FixedUpdate()
@@ -85,10 +90,25 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
 
     }
 
-    //public void WallSlide()
-    //{
+    private bool IsWalled()
+    {
+        return Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
+    }
 
-    //}
+    private void WallSlide()
+    {
+        if(IsWalled() && !isGrounded == false && horizontal !=0f)
+        {
+            isWallSliding = true;
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+        }
+        else
+        {
+            isWallSliding = false;
+        }
+    }
+
+
 
     #endregion
 
