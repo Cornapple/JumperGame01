@@ -19,8 +19,7 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
 
     public bool isGrounded; // a true or false value. in this case refering to whether the player is touching the ground or not
     public bool isJumping; // a true or false value. in this case refering to whether the player is jumping or not
-    private bool isWallSliding;
-
+    public bool isWallSliding;
 
     public Transform groundCheck;
     public Transform wallCheck;// empty object with collider to check if the player is touching the ground        
@@ -32,6 +31,7 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
         Debug.Log("Hello World");
         isGrounded = true;
         isJumping = false;
+        isWallSliding = false;
     }
 
     private void Update()
@@ -87,31 +87,25 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
             isJumping = false;
             Debug.Log("isGounded is true");
         }
-
     }
 
     private bool IsWalled()
     {
+        Debug.Log("IsWalled function called");
         return Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
     }
-
     private void WallSlide()
     {
         if(IsWalled() && !isGrounded == false && horizontal !=0f)
         {
             isWallSliding = true;
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+            Debug.Log("player is wallsliding");
         }
         else
         {
             isWallSliding = false;
         }
     }
-
-
-
     #endregion
-
-
-
 }
