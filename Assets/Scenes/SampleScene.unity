@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 239904913}
   - component: {fileID: 239904912}
   - component: {fileID: 239904916}
+  - component: {fileID: 239904917}
   m_Layer: 0
   m_Name: PlayerObject
   m_TagString: Player
@@ -280,6 +281,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1305322442}
   - {fileID: 310308553}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -300,15 +302,35 @@ MonoBehaviour:
   playerMovementSpeed: 10
   jumpForce: 12
   doubleJump: 10
+  wallSlidingSpeed: 0.1
   jumpCount: 0
   maxJumps: 1
   isGrounded: 0
   isJumping: 0
+  isWallSliding: 0
   groundCheck: {fileID: 310308553}
+  wallCheck: {fileID: 1305322442}
   groundCheckRadius: 0.1
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &239904917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239904910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6058ecbbbad2aca4a84e4d4f94a80a79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 0
+  playerLevel: 0
 --- !u!1 &310308552
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,6 +712,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1305322441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1305322442}
+  m_Layer: 0
+  m_Name: wallCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1305322442
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305322441}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.541, y: -0.012, z: -0.04917539}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 239904915}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1939713766
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,7 +786,7 @@ GameObject:
   - component: {fileID: 2005424807}
   - component: {fileID: 2005424809}
   - component: {fileID: 2005424808}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Wall01
   m_TagString: onWall
   m_Icon: {fileID: 0}
