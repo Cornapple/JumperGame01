@@ -1,2 +1,5 @@
 *.tiff filter=lfs diff=lfs merge=lfs -text
 *.png filter=lfs diff=lfs merge=lfs -text
+*.TMP filter=lfs diff=lfs merge=lfs -text
+*.TMP__SDF filter=lfs diff=lfs merge=lfs -text
+*.sdf filter=lfs diff=lfs merge=lfs -text
