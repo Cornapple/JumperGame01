@@ -4,17 +4,31 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public int playerHealth;
-    public int playerLevel;
+    public int maxHealth = 5;
+
     // Start is called before the first frame update
     void Start()
     {
-        playerHealth = 5;
-        playerLevel = 1;
+        playerHealth = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+   
+
     }
+
+    public void TakeDamage(int amount)
+    {
+        playerHealth -= amount;
+
+        if(playerHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+ 
 }
+
