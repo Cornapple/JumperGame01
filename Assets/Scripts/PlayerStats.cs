@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour
 {
-    public int playerHealth;
-    public int maxHealth = 5;
+    public  float playerHealth;
+    public float maxHealth = 5f;
 
     public Image healthBar;
 
@@ -20,7 +20,7 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthBar.fillAmount = Mathf.Clamp(playerHealth / maxHealth, 0, 100);
+        healthBar.fillAmount = Mathf.Clamp(playerHealth / maxHealth, 0, 1);
 
     }
 
