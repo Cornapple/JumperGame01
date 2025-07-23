@@ -21,10 +21,13 @@ public class EnemyDamage : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
+            Debug.Log("enemy has collided with player");
+            playerStats = null;
             if (playerStats == null)
             {
                 playerStats = collision.gameObject.GetComponent<PlayerStats>();
                 playerStats.TakeDamage(damage);
+                Debug.Log("enemy has damaged player");
             }
         }
     }

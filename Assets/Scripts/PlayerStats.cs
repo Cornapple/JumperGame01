@@ -18,8 +18,7 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthBar.fillAmount = Mathf.Clamp(playerHealth / maxHealth, 0, 5);
-
+        healthBar.fillAmount = Mathf.Clamp(playerHealth / maxHealth, 0, 1);
 
     }
 
@@ -30,6 +29,7 @@ public class PlayerStats : MonoBehaviour
         if(playerHealth <= 0)
         {
             Destroy(gameObject);
+            Debug.Log("player object has been destroyed");
         }
     }
 

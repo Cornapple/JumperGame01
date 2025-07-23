@@ -85,13 +85,13 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
         {
             jumpCount = 0;
             isJumping = false;
-            Debug.Log("isGounded is true");
+            //Debug.Log("isGounded is true");
         }
     }
 
     private bool IsWalled()
     {
-        Debug.Log("IsWalled function called");
+        //Debug.Log("IsWalled function called");
         return Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
     }
     private void WallSlide()
