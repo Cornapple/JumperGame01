@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour
 {
@@ -18,7 +20,7 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthBar.fillAmount = Mathf.Clamp(playerHealth / maxHealth, 0, 1);
+        healthBar.fillAmount = Mathf.Clamp(playerHealth / maxHealth, 0, 100);
 
     }
 
@@ -28,8 +30,9 @@ public class PlayerStats : MonoBehaviour
 
         if(playerHealth <= 0)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
             Debug.Log("player object has been destroyed");
+            SceneManager.LoadSceneAsync(1);
         }
     }
 
