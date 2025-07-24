@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
     public Rigidbody2D rb; // the rigidbody (2d physics) applied to the above game object
 
     private float horizontal; // a number value characterised by point values. in this case refering to the Horizontal axis
-    private float vertical; // a number value characterised by point values. in this case refering to the Vertical axis
+    //private float vertical; // a number value characterised by point values. in this case refering to the Vertical axis
     public float playerMovementSpeed; // a number value characterised by point values. in this case refering to the player movement speed
     public float jumpForce = 0.5f; // a number value characterised by point values. in this case refering to the jump force of the player
     public float doubleJump = 0.3f;
@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
     private void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
+        //vertical = Input.GetAxisRaw("Vertical");
 
         MovementSystem();
         JumpButton();
@@ -85,18 +85,20 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
         {
             jumpCount = 0;
             isJumping = false;
-            //Debug.Log("isGounded is true");
+            Debug.Log("isGounded is true");
         }
     }
 
-    private bool IsWalled()
+    private bool IsTouchingWall()
     {
-        //Debug.Log("IsWalled function called");
-        return Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
+        Debug.Log("IsWalled function called");
+        bool isTouchingWall = Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
+        Debug.Log("is Touching Wall?" +  isTouchingWall);
+        return isTouchingWall;
     }
     private void WallSlide()
     {
-        if(IsWalled() && !isGrounded == false && horizontal >=1f)
+        if(IsTouchingWall() && isGrounded == false && horizontal >=1f)
         {
             isWallSliding = true;
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
