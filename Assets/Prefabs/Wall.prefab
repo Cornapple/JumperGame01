@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6652985992782544796}
   - component: {fileID: 3752579436941547231}
   m_Layer: 7
-  m_Name: Wall Collider
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
