@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerText;
-    [SerializeField] float remainingTime;
     public PlayerStats playerStats;
 
+    [SerializeField] float remainingTime;  
+    public Image timerBar;
+
+    public float maxTime;
     void Update()
     {
         if (remainingTime > 0)
@@ -27,7 +31,10 @@ public class Timer : MonoBehaviour
         int seconds = Mathf.FloorToInt(remainingTime % 60);
 
         timerText.text = string.Format("{0:00}:{1:00}",minutes,seconds);
-        
+
+
+
+        timerBar.fillAmount = Mathf.Clamp(remainingTime / maxTime, 0, 1);
     }
 
     public void TimerRegen()
