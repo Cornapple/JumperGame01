@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class Timer : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Timer : MonoBehaviour
     public Image timerBar;
 
     public float maxTime;
+
+    public GameObject waterDrop;
     void Update()
     {
         if (remainingTime > 0)
@@ -37,8 +40,5 @@ public class Timer : MonoBehaviour
         timerBar.fillAmount = Mathf.Clamp(remainingTime / maxTime, 0, 1);
     }
 
-    public void TimerRegen()
-    {
 
-    }
 }
