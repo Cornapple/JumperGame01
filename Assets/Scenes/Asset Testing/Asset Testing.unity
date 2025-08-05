@@ -5771,6 +5771,7 @@ MonoBehaviour:
   groundCheck: {fileID: 2120424445}
   wallCheck: {fileID: 1770137497}
   groundCheckRadius: 0.1
+  wallCheckRadius: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -7205,7 +7206,7 @@ Transform:
   m_GameObject: {fileID: 653354887}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -196.02, y: 215.7, z: 0}
+  m_LocalPosition: {x: -197.55, y: 222.04, z: 0}
   m_LocalScale: {x: 0.25753, y: 0.25753, z: 0.25753}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7240,7 +7241,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -7258,9 +7259,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94fc4e4d83e18374098687ab1c3ee485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterDrop: {fileID: 0}
-  playerStats: {fileID: 0}
-  timer: {fileID: 0}
+  waterDrop: {fileID: 653354887}
+  playerStats: {fileID: 548094201}
+  timer: {fileID: 600005585}
 --- !u!1 &657956379
 GameObject:
   m_ObjectHideFlags: 0

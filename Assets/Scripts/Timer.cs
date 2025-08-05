@@ -11,7 +11,7 @@ public class Timer : MonoBehaviour
     [SerializeField] TextMeshProUGUI timerText;
     public PlayerStats playerStats;
 
-    [SerializeField] float remainingTime;  
+    public float remainingTime;  
     public Image timerBar;
 
     public float maxTime;

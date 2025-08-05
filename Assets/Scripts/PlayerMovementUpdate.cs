@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
     public Transform groundCheck;
     public Transform wallCheck;// empty object with collider to check if the player is touching the ground        
     public float groundCheckRadius = 0.5f; // the size of the collider used on the groundcheck
+    public float wallCheckRadius = 1f;
     public LayerMask groundLayer; // the layer mask applied to the ground to allow the groundcheck to function
     public LayerMask wallLayer;
     private void Start()
@@ -92,7 +93,7 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
     private bool IsTouchingWall()
     {
         Debug.Log("IsWalled function called");
-        bool isTouchingWall = Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
+        bool isTouchingWall = Physics2D.OverlapCircle(wallCheck.position, 10f, wallLayer);
         Debug.Log("is Touching Wall?" +  isTouchingWall);
         return isTouchingWall;
     }

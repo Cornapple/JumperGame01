@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WaterDrop : MonoBehaviour
@@ -18,19 +19,26 @@ public class WaterDrop : MonoBehaviour
     {
         
     }
-    public void OnCollisionEnter2D(Collision2D collision)
+    //public void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    Debug.Log("player has collided with waterdrop");
+    //    if (waterDrop != null && collision.gameObject.tag == "Collectable")
+    //    {
+    //        timer = GetComponent<Timer>();
+    //        timer = new Timer();
+    //    }
+    //}
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (waterDrop != null)
+        // Example using GetComponent
+        Timer timer = collision.gameObject.GetComponent<Timer>();
+
+        if (timer != null)
         {
+            // Call a public method in OtherScript
+            timer.remainingTime = 45f;
+
             
         }
     }
-
-
-    //public void OnCollisionEnter2D()
-    //{
-    //    if (waterDrop != null)
-    //        remainingTime = maxTime;
-    //    return;
-    //}
 }
