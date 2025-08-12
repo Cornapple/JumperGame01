@@ -93,7 +93,7 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
     private bool IsTouchingWall()
     {
         Debug.Log("IsWalled function called");
-        bool isTouchingWall = Physics2D.OverlapCircle(wallCheck.position, 2f, wallLayer);
+        bool isTouchingWall = Physics2D.OverlapCircle(wallCheck.position, 1f, wallLayer);
         Debug.Log("is Touching Wall?" +  isTouchingWall);
         return isTouchingWall;
     }

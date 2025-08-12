@@ -17,8 +17,8 @@ public class ExitScript : MonoBehaviour
         
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        SceneManager.LoadSceneAsync(0); 
-    }
+    //public void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    SceneManager.LoadSceneAsync(0); 
+    //}
 }
