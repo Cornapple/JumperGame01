@@ -30,14 +30,13 @@ public class WaterDrop : MonoBehaviour
     //        timer = new Timer();
     //    }
     //}
-    void OnCollisionEnter2D(Collision2D collision)
+    public void CollectDrop()
     {
         // Example using GetComponent
-        Timer timer = collision.gameObject.GetComponent<Timer>();
+        Timer timer = gameObject.GetComponent<Timer>();
 
         if (timer != null)
         {
-            // Call a public method in OtherScript
             timer.remainingTime = 45f;
 
             

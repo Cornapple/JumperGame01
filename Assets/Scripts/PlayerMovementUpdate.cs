@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
 {
     public GameObject player; // the in-engine object that the code with move with the below script
     public Rigidbody2D rb; // the rigidbody (2d physics) applied to the above game object
+    public Animator animator;
 
     private float horizontal; // a number value characterised by point values. in this case refering to the Horizontal axis
     //private float vertical; // a number value characterised by point values. in this case refering to the Vertical axis
@@ -29,10 +30,12 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
     public LayerMask wallLayer;
     private void Start()
     {
-        Debug.Log("Hello World");
+        //Debug.Log("Hello World");
         isGrounded = true;
         isJumping = false;
         isWallSliding = false;
+
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -60,6 +63,8 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
     {
         CheckIfGrounded();
         //WallSlide();
+        animator.SetFloat("xVelocity", Mathf.Abs(rb.velocity.x));
+        animator.SetFloat("yVelocity", rb.velocity.y);
     }
 
     #region BUTTONS 
@@ -73,7 +78,7 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
         if (Input.GetKeyDown(KeyCode.Space) && (isGrounded == true || jumpCount < maxJumps))
         {
             isJumping = true;
-            Debug.Log("isJumping is true");
+            //Debug.Log("isJumping is true");
             if (jumpCount == 0)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -81,9 +86,10 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
             else
             {
                 rb.velocity = new Vector2(rb.velocity.x, doubleJump);
-                Debug.Log("the double jump has been called");
+                //Debug.Log("the double jump has been called");
             }
             jumpCount++;
+            animator.SetBool ("isJumping", !isGrounded);
         }    
     }
 
@@ -97,13 +103,15 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
         {
             jumpCount = 0;
             isJumping = false;
-            Debug.Log("isGounded is true");
+            //Debug.Log("isGounded is true");
+            animator.SetBool("isJumping", !isGrounded);
+
         }
     }
 
     private bool IsTouchingWall()
     {
-        Debug.Log("IsWalled function called");
+        //Debug.Log("IsWalled function called");
         bool isTouchingWall = Physics2D.OverlapCircle(wallCheck.position, 1f, wallLayer);
         Debug.Log("is Touching Wall?" +  isTouchingWall);
         return isTouchingWall;
@@ -123,9 +131,5 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
     }
     #endregion
 
-    //public void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    Debug.Log("is Triggered");
-       
-    //}
+
 }

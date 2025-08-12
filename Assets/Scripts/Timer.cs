@@ -40,5 +40,15 @@ public class Timer : MonoBehaviour
         timerBar.fillAmount = Mathf.Clamp(remainingTime / maxTime, 0, 1);
     }
 
+    //public void WaterDropCollect()
+    //{
+    //    if (remainingTime <= maxTime && gameObject == null)
+    //    {
+    //        Debug.Log("waterDrop collected");
+    //        remainingTime = maxTime;
+    //        gameObject.name = "WaterDrop";
+    //    }
+    //}
+
 
 }
