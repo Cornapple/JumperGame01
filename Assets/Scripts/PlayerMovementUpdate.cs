@@ -111,4 +111,10 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
         }
     }
     #endregion
+
+    //public void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    Debug.Log("is Triggered");
+       
+    //}
 }

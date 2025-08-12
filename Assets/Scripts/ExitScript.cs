@@ -5,20 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class ExitScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public PlayerMovement PlayerMovement;
 
-    // Update is called once per frame
-    void Update()
+    public void ExitLevel()
     {
-        
+        //SceneManager.LoadSceneAsync(0);
     }
-
-    //public void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    SceneManager.LoadSceneAsync(0); 
-    //}
 }

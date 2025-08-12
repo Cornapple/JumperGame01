@@ -8,16 +8,18 @@ public class WaterDrop : MonoBehaviour
     public GameObject waterDrop;
     public PlayerStats playerStats;
     public Timer timer;
+    public bool isTriggered;
     // Start is called before the first frame update
     void Start()
     {
         playerStats = GetComponent<PlayerStats>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+    
     }
     //public void OnCollisionEnter2D(Collision2D collision)
     //{
