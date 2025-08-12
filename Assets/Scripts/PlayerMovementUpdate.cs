@@ -43,6 +43,17 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
         MovementSystem();
         JumpButton();
         WallSlide();
+
+        float horizontalInput = Input.GetAxis("Horizontal");
+
+        if (horizontalInput > 0) // Moving right
+        {
+            transform.localScale = new Vector3(1, 1, 1); // Original scale
+        }
+        else if (horizontalInput < 0) // Moving left
+        {
+            transform.localScale = new Vector3(-1, 1, 1); // Flipped scale
+        }
     }
 
     private void FixedUpdate()
