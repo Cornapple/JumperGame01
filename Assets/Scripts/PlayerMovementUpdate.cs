@@ -65,6 +65,7 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
         //WallSlide();
         animator.SetFloat("xVelocity", Mathf.Abs(rb.velocity.x));
         animator.SetFloat("yVelocity", rb.velocity.y);
+       
     }
 
     #region BUTTONS 
@@ -78,6 +79,8 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
         if (Input.GetKeyDown(KeyCode.Space) && (isGrounded == true || jumpCount < maxJumps))
         {
             isJumping = true;
+            animator.SetBool("isJumping", !isGrounded);
+
             //Debug.Log("isJumping is true");
             if (jumpCount == 0)
             {
@@ -88,8 +91,7 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
                 rb.velocity = new Vector2(rb.velocity.x, doubleJump);
                 //Debug.Log("the double jump has been called");
             }
-            jumpCount++;
-            animator.SetBool ("isJumping", !isGrounded);
+            jumpCount++;          
         }    
     }
 
@@ -104,7 +106,7 @@ public class PlayerMovement : MonoBehaviour //the movement script made to move t
             jumpCount = 0;
             isJumping = false;
             //Debug.Log("isGounded is true");
-            animator.SetBool("isJumping", !isGrounded);
+            animator.SetBool("isJumping", isGrounded);
 
         }
     }
